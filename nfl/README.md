@@ -117,7 +117,7 @@ pip install statsmodels
 - [ ] IR transaction data not in weekly report feed — 
       would require load_transactions() ingestion to add severity designation bonus
 - [ ] Timeline chart built in notebook but not yet exported to blog post assets
-- [ ] Notebook not yet pushed to GitHub — no notebook link in blog post yet
+- [x] Notebook pushed to GitHub — notebook link added to blog post and project card
 - [ ] SportTurf OR=1.082 p=0.048 borderline significant — worth monitoring in Section 2 controls
 
 ---
