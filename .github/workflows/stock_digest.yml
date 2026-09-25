@@ -1,0 +1,70 @@
+name: Weekly Stock Digest
+
+# Two ways this workflow starts.
+on:
+  schedule:
+    # GitHub cron is always UTC and does not follow daylight saving time.
+    # Mountain Time does, so a single fixed UTC time drifts by an hour across
+    # the year. 01:00 UTC on Monday is:
+    #   Sunday 6:00 pm Mountain Standard Time  (Nov to Mar, UTC-7)
+    #   Sunday 7:00 pm Mountain Daylight Time  (Mar to Nov, UTC-6)
+    # Change this to "0 0 * * 1" if you would rather have 6:00 pm in summer
+    # and 5:00 pm in winter.
+    - cron: "0 1 * * 1"
+  # Lets you run it by hand from the Actions tab, which is how you test it.
+  workflow_dispatch:
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    # A hung network call should not burn Actions minutes all night.
+    timeout-minutes: 20
+
+    # The secret is exposed to every step in the job as an environment
+    # variable. The scripts read it with os.environ, so nothing is ever
+    # passed on a command line where it could show up in the logs.
+    env:
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          # Caches the pip download directory between runs so the install step
+          # is quick after the first week.
+          cache: "pip"
+          cache-dependency-path: stock_digest/requirements.txt
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip -r stock_digest/requirements.txt
+
+      - name: Gather free market data
+        run: python stock_digest/scripts/02_gather_market_data.py
+
+      # The Claude summarization step (scripts/03_summarize_with_claude.py) is
+      # deliberately not run here, which keeps this workflow free to operate.
+      # Stage 4 handles the missing summaries on its own. To turn the
+      # one-liners back on later, add an ANTHROPIC_API_KEY repository secret,
+      # put it back in the env block above, restore anthropic to
+      # requirements.txt, and add this step back:
+      #
+      #   - name: Summarize with Claude
+      #     run: python stock_digest/scripts/03_summarize_with_claude.py
+
+      - name: Post to Discord
+        run: python stock_digest/scripts/04_post_to_discord.py
+
+      # Handy when something looks wrong: download the exact data that went
+      # into the message from the run's Artifacts section. Kept for two weeks.
+      - name: Upload the run data for debugging
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: digest-data-${{ github.run_id }}
+          path: stock_digest/data/*.json
+          retention-days: 14
+          if-no-files-found: ignore

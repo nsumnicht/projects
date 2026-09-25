@@ -1,0 +1,20 @@
+# Weekly stock digest dependencies.
+# Pinned to major versions so a surprise release cannot break a Sunday run.
+
+# Free price data, scrapes Yahoo Finance, no API key needed.
+yfinance>=1.7,<2.0
+
+# Free RSS parsing for the Google News feed, no API key needed.
+feedparser>=6.0,<7.0
+
+# HTTP for the news feed and the Discord webhook.
+requests>=2.31,<3.0
+
+# Optional, and not installed by the GitHub Actions workflow. Only needed if
+# you re-enable the Claude summarization step in 03_summarize_with_claude.py,
+# which is the one part of this project that would cost money to run.
+# anthropic>=1.0,<2.0
+
+# Postgres archiving. Optional: the run skips the database step when the
+# DB_ variables are absent, which is what happens on the GitHub runner.
+pg8000>=1.30,<2.0

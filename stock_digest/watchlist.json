@@ -1,0 +1,122 @@
+{
+  "sectors": [
+    {
+      "name": "Biotech",
+      "tickers": [
+        {
+          "symbol": "KOD",
+          "company": "Kodiak Sciences",
+          "events": [
+            { "label": "DAYBREAK trial topline data", "date": "2026-09-30", "notes": "one-year primary endpoint readout" }
+          ]
+        },
+        {
+          "symbol": "SMMT",
+          "company": "Summit Therapeutics",
+          "events": [
+            { "label": "FDA decision", "date": "2026-11-14", "notes": "" }
+          ]
+        },
+        {
+          "symbol": "CAPR",
+          "company": "Capricor Therapeutics",
+          "events": [
+            { "label": "FDA decision", "date": "2026-11-22", "notes": "" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GLP-1 / Obesity Drugs",
+      "tickers": [
+        {
+          "symbol": "VKTX",
+          "company": "Viking Therapeutics",
+          "events": [
+            { "label": "Phase 3 VANQUISH topline data", "date": "2027-03-01", "notes": "estimate" }
+          ]
+        },
+        { "symbol": "LLY", "company": "Eli Lilly", "events": [] },
+        { "symbol": "PFE", "company": "Pfizer", "events": [] }
+      ]
+    },
+    {
+      "name": "Space",
+      "tickers": [
+        {
+          "symbol": "RKLB",
+          "company": "Rocket Lab",
+          "events": [
+            { "label": "Neutron rocket first launch", "date": "2026-12-31", "notes": "estimate, has slipped before" }
+          ]
+        },
+        { "symbol": "ASTS", "company": "AST SpaceMobile", "events": [] }
+      ]
+    },
+    {
+      "name": "Defense",
+      "tickers": [
+        { "symbol": "KTOS", "company": "Kratos Defense", "events": [] },
+        { "symbol": "AVAV", "company": "AeroVironment", "events": [] }
+      ],
+      "sector_events": [
+        { "label": "Federal defense budget deadline", "date": "2026-12-05", "notes": "" }
+      ]
+    },
+    {
+      "name": "AI Chips",
+      "tickers": [
+        {
+          "symbol": "MU",
+          "company": "Micron Technology",
+          "events": [
+            { "label": "Q4 earnings report", "date": "2026-09-30", "notes": "" }
+          ]
+        },
+        {
+          "symbol": "MRVL",
+          "company": "Marvell Technology",
+          "events": [
+            { "label": "Investor Day", "date": "2026-10-06", "notes": "" }
+          ]
+        },
+        { "symbol": "CRDO", "company": "Credo Technology", "events": [] },
+        { "symbol": "SNDK", "company": "SanDisk", "events": [] }
+      ]
+    },
+    {
+      "name": "Energy / Power",
+      "tickers": [
+        { "symbol": "CEG", "company": "Constellation Energy", "events": [] },
+        {
+          "symbol": "SMR",
+          "company": "NuScale Power",
+          "events": [
+            { "label": "Federal regulator decision", "date": "2026-12-31", "notes": "" }
+          ]
+        },
+        { "symbol": "FSLR", "company": "First Solar", "events": [] }
+      ]
+    },
+    {
+      "name": "EV / Batteries",
+      "tickers": [
+        {
+          "symbol": "RIVN",
+          "company": "Rivian",
+          "events": [
+            { "label": "Q3 delivery report", "date": "2026-10-05", "notes": "estimate" }
+          ]
+        },
+        { "symbol": "QS", "company": "QuantumScape", "events": [] }
+      ]
+    },
+    {
+      "name": "3D Printing",
+      "tickers": [
+        { "symbol": "DDD", "company": "3D Systems", "events": [] },
+        { "symbol": "XMTR", "company": "Xometry", "events": [] }
+      ]
+    }
+  ]
+}
