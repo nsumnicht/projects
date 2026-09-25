@@ -2,3 +2,7 @@ venv/
 __pycache__/
 *.pyc
 .env
+work/job_search/google_credentials.json
+# stock_digest: per-run output, regenerated every week
+stock_digest/data/*.json
+!stock_digest/data/.gitkeep
