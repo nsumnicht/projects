@@ -75,8 +75,10 @@ to six messages, two keeps it to four.
 ## TODO
 
 - [x] Post a real digest to Discord, verified 2026-09-24
-- [ ] Add `DISCORD_WEBHOOK_URL` as a repository secret
-- [ ] Commit and push, then trigger one manual `workflow_dispatch` run
+- [x] Add `DISCORD_WEBHOOK_URL` as a repository secret
+- [x] Commit and push, done 2026-09-24 as commit 111947c on main
+- [ ] Trigger one manual `workflow_dispatch` run from the Actions tab and
+      confirm the digest arrives and the @everyone ping fires once
 - [ ] Refine the seed event dates, most are estimates
 - [ ] Decide whether the Postgres archive is worth running locally on a
       schedule, given the Actions run cannot reach the database
