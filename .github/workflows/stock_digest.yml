@@ -25,6 +25,9 @@ jobs:
     # passed on a command line where it could show up in the logs.
     env:
       DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      # Free key from https://api.congress.gov/sign-up/. If this secret is
+      # absent the legislation step skips itself and the digest still posts.
+      CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
 
     steps:
       - name: Check out the repository
@@ -44,6 +47,11 @@ jobs:
 
       - name: Gather free market data
         run: python stock_digest/scripts/02_gather_market_data.py
+
+      - name: Gather moving legislation
+        # Also free. Exits 0 even without an API key, in which case the digest
+        # posts without the legislation fields.
+        run: python stock_digest/scripts/02b_gather_legislation.py
 
       # The Claude summarization step (scripts/03_summarize_with_claude.py) is
       # deliberately not run here, which keeps this workflow free to operate.

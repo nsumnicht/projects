@@ -20,11 +20,14 @@ Runs itself every Sunday evening through GitHub Actions. Nothing to click.
    parsed with `feedparser`. Also free, also no key.
 4. Compares today's date to each event date in the watchlist and labels it
    upcoming or passed. This is plain date arithmetic, no AI involved.
-5. Builds one Discord embed per sector, colored by how urgent that sector's
+5. Asks the free Congress.gov API which bills have actually advanced, and
+   matches them to sectors by keyword and policy area.
+6. Builds one Discord embed per sector, colored by how urgent that sector's
    nearest event is, and posts it through a webhook.
 
-Every one of those steps is free. There is no API key, no account, and no
-billing anywhere in the default pipeline.
+Every one of those steps is free. The only account involved is a free
+Congress.gov API key for step 5, and the digest runs fine without it. Nothing
+in the default pipeline is billable.
 
 ## Layout
 
@@ -38,6 +41,7 @@ stock_digest/
     common.py               shared helpers, not a pipeline stage
     01_smoke_test.py        checks the setup, costs nothing
     02_gather_market_data.py    free data gathering
+    02b_gather_legislation.py   free, bills that actually moved
     03_summarize_with_claude.py optional, off by default, the only paid part
     04_post_to_discord.py       builds and posts the message
 ```
@@ -82,9 +86,12 @@ cannot be read back out of the web interface once saved.
 4. Click **New repository secret**.
 5. Name: `DISCORD_WEBHOOK_URL`. Secret: paste the webhook URL from step 1.
    Click **Add secret**.
+6. Repeat for `CONGRESS_API_KEY`, using a free key from
+   https://api.congress.gov/sign-up/. This one is optional: without it the
+   digest still posts, just with no legislation fields.
 
-The name has to match exactly, in capitals, because the workflow file looks it
-up by name. That is the only secret this project needs.
+The names have to match exactly, in capitals, because the workflow file looks
+them up by name.
 
 To confirm it works, go to the **Actions** tab, pick **Weekly Stock Digest**
 in the left sidebar, and click **Run workflow**. That is the
@@ -121,6 +128,11 @@ works there, the optional Anthropic SDK would not install.
 # Writes data/digest_raw.json.
 ../venv/Scripts/python.exe scripts/02_gather_market_data.py
 
+# Costs nothing. Scans about 4,500 recently updated bills and keeps the
+# handful that actually moved and touch a watchlist sector.
+# Writes data/legislation.json.
+../venv/Scripts/python.exe scripts/02b_gather_legislation.py
+
 # Prints the exact Discord message as JSON and posts nothing. Run this
 # before you ever post for real.
 ../venv/Scripts/python.exe scripts/04_post_to_discord.py --dry-run
@@ -138,6 +150,73 @@ Nothing, as configured. `yfinance` and the Google News RSS feed are both free
 and need no account, GitHub Actions is free for public repositories and has a
 generous free allowance for private ones, and a Discord webhook costs nothing.
 A weekly run takes a couple of minutes of Actions time.
+
+## Legislation tracking
+
+Stage 2b adds a "Legislation moving in Congress" field to each sector embed,
+using the free Congress.gov API. It answers a forward-looking question that
+prices and headlines do not: is something coming that affects what I hold.
+
+### Why the filtering is the whole feature
+
+Roughly 4,500 bills get some kind of update in any 14 day window, and the
+large majority of those updates read "Referred to the Committee on ...", which
+is where most bills go to die. Reporting newly introduced bills would be pure
+noise, so a bill only appears once it has genuinely advanced: cleared a
+committee, been placed on a calendar, passed a chamber, or become law.
+
+There are two filters, and both matter:
+
+1. **The action must indicate movement.** Matched against a list of action
+   prefixes at the top of the script, with referral-type actions excluded
+   first. This cuts about 4,500 bills to roughly 500.
+2. **The action must be recent.** The API's `updateDate` changes on any
+   metadata edit, not just a legislative action, so bills whose last real
+   action was months ago still appear in a query for recently updated bills.
+   Without this second check the digest would report the same bill becoming
+   law every week forever. This cuts roughly 500 to about 200.
+
+Then the title is matched against the sector keywords, and the policy area is
+used to confirm the match, which typically leaves 0 to 3 bills a week. A quiet
+week shows nothing rather than an empty heading, and that is the correct
+outcome, not a bug.
+
+### A warning about the lookback window
+
+Do not raise `--days` much above the default 14. Congress.gov accepts a `sort`
+parameter but does not reliably honour it alongside a date filter: a 45 day
+query was observed returning the same mid-window date on both the first and
+the twenty-fifth page. Since a 45 day window is over 35,000 bills, far more
+than can be fetched, the result is an arbitrary partial slice, and an unsorted
+partial slice looks exactly like a quiet week in Congress. A wider window
+therefore produces worse results than a narrow one.
+
+The script guards against this: it compares the reported total against what it
+can fetch and logs a loud warning when coverage would be incomplete. If you
+see that warning, shorten the window rather than trusting the output.
+
+### Tuning what counts as relevant
+
+Each sector in `watchlist.json` carries two fields that drive this:
+
+```json
+{
+  "name": "AI Chips",
+  "policy_areas": ["Science, Technology, Communications",
+                   "Foreign Trade and International Finance"],
+  "keywords": ["semiconductor", "CHIPS", "export control",
+               "artificial intelligence", "microelectronics"]
+}
+```
+
+`keywords` are matched case-insensitively against the bill title, and are the
+primary filter. `policy_areas` must match the bill's official Congress.gov
+policy area, and acts as a confirmation that drops false positives. An empty
+`policy_areas` list means no confirmation filtering for that sector.
+
+If a sector never surfaces anything, its keywords are probably too specific.
+If it surfaces junk, add a policy area to narrow it. Both are safe to edit by
+hand, and the `watchlist-editor` agent knows about them.
 
 ## Optional: turning the Claude one-liners back on
 
@@ -288,6 +367,8 @@ Every failure mode here is designed to degrade rather than stop.
 |---|---|
 | One ticker fails in yfinance | That ticker is logged, its price shows as unavailable, everything else posts |
 | No headlines for a ticker | The field says so, the run continues |
+| No `CONGRESS_API_KEY` set | Legislation fields are omitted, everything else posts |
+| Congress.gov errors or rate limits | Same, logged as a warning, the digest still posts |
 | Claude step is off, the normal case | Nothing to report, the digest posts the free data with a clean header |
 | Claude enabled and the API errors | The digest posts without one-liners and says so in the header |
 | Postgres unreachable | Logged as a warning, the digest still posts |

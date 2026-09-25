@@ -21,6 +21,8 @@ is the whole job.
   "sectors": [
     {
       "name": "Biotech",
+      "policy_areas": ["Health"],
+      "keywords": ["FDA", "clinical trial", "biosimilar"],
       "sector_events": [
         { "label": "Affects the whole sector", "date": "2026-12-05", "notes": "" }
       ],
@@ -50,6 +52,37 @@ Field rules:
   estimate, which most of them are.
 - `sector_events` is optional, sits at the sector level, and applies to every
   ticker in that sector.
+- `keywords` drive the legislation feature. They are matched case
+  insensitively against bill titles from the Congress.gov API, so they should
+  be phrases that would realistically appear in the official title of a bill,
+  for example "semiconductor" or "National Defense Authorization". Avoid
+  single common words, which pull in unrelated bills.
+- `policy_areas` must match Congress.gov's own policy area names exactly, for
+  example "Health", "Energy", "Armed Forces and National Security", or
+  "Science, Technology, Communications". They act as a confirmation filter that
+  drops keyword false positives. An empty list disables that filtering for the
+  sector.
+
+## Tuning the legislation keywords
+
+A new sector needs `policy_areas` and `keywords` as well as tickers, otherwise
+it will never surface legislation. When adding one, propose both and explain
+your reasoning.
+
+If the user says a sector never shows any bills, its keywords are probably too
+specific: suggest broader phrasing. If it shows irrelevant bills, add or
+tighten a policy area rather than deleting keywords, since the policy area is
+official structured data and the keyword is a guess.
+
+You can check a keyword against real data without posting anything:
+
+```bash
+./venv/Scripts/python.exe stock_digest/scripts/02b_gather_legislation.py
+```
+
+The log reports how many bills were scanned, how many actually moved, and how
+many matched a sector. Zero matches in a week is a normal and correct result,
+not a failure, so do not loosen the filters just to produce output.
 
 ## How to handle a request
 

@@ -2,120 +2,307 @@
   "sectors": [
     {
       "name": "Biotech",
+      "policy_areas": [
+        "Health"
+      ],
+      "keywords": [
+        "FDA",
+        "Food and Drug Administration",
+        "clinical trial",
+        "drug approval",
+        "biosimilar",
+        "orphan drug",
+        "rare disease",
+        "gene therapy"
+      ],
       "tickers": [
         {
           "symbol": "KOD",
           "company": "Kodiak Sciences",
           "events": [
-            { "label": "DAYBREAK trial topline data", "date": "2026-09-30", "notes": "one-year primary endpoint readout" }
+            {
+              "label": "DAYBREAK trial topline data",
+              "date": "2026-09-30",
+              "notes": "one-year primary endpoint readout"
+            }
           ]
         },
         {
           "symbol": "SMMT",
           "company": "Summit Therapeutics",
           "events": [
-            { "label": "FDA decision", "date": "2026-11-14", "notes": "" }
+            {
+              "label": "FDA decision",
+              "date": "2026-11-14",
+              "notes": ""
+            }
           ]
         },
         {
           "symbol": "CAPR",
           "company": "Capricor Therapeutics",
           "events": [
-            { "label": "FDA decision", "date": "2026-11-22", "notes": "" }
+            {
+              "label": "FDA decision",
+              "date": "2026-11-22",
+              "notes": ""
+            }
           ]
         }
       ]
     },
     {
       "name": "GLP-1 / Obesity Drugs",
+      "policy_areas": [
+        "Health",
+        "Taxation"
+      ],
+      "keywords": [
+        "obesity",
+        "GLP-1",
+        "weight loss",
+        "prescription drug pric",
+        "insulin",
+        "Medicare drug",
+        "drug rebate"
+      ],
       "tickers": [
         {
           "symbol": "VKTX",
           "company": "Viking Therapeutics",
           "events": [
-            { "label": "Phase 3 VANQUISH topline data", "date": "2027-03-01", "notes": "estimate" }
+            {
+              "label": "Phase 3 VANQUISH topline data",
+              "date": "2027-03-01",
+              "notes": "estimate"
+            }
           ]
         },
-        { "symbol": "LLY", "company": "Eli Lilly", "events": [] },
-        { "symbol": "PFE", "company": "Pfizer", "events": [] }
+        {
+          "symbol": "LLY",
+          "company": "Eli Lilly",
+          "events": []
+        },
+        {
+          "symbol": "PFE",
+          "company": "Pfizer",
+          "events": []
+        }
       ]
     },
     {
       "name": "Space",
+      "policy_areas": [
+        "Science, Technology, Communications",
+        "Armed Forces and National Security"
+      ],
+      "keywords": [
+        "NASA",
+        "space launch",
+        "commercial space",
+        "satellite",
+        "orbital",
+        "Space Force",
+        "spectrum"
+      ],
       "tickers": [
         {
           "symbol": "RKLB",
           "company": "Rocket Lab",
           "events": [
-            { "label": "Neutron rocket first launch", "date": "2026-12-31", "notes": "estimate, has slipped before" }
+            {
+              "label": "Neutron rocket first launch",
+              "date": "2026-12-31",
+              "notes": "estimate, has slipped before"
+            }
           ]
         },
-        { "symbol": "ASTS", "company": "AST SpaceMobile", "events": [] }
+        {
+          "symbol": "ASTS",
+          "company": "AST SpaceMobile",
+          "events": []
+        }
       ]
     },
     {
       "name": "Defense",
+      "policy_areas": [
+        "Armed Forces and National Security"
+      ],
+      "keywords": [
+        "National Defense Authorization",
+        "defense appropriations",
+        "unmanned aircraft",
+        "drone",
+        "munitions",
+        "defense procurement",
+        "hypersonic"
+      ],
       "tickers": [
-        { "symbol": "KTOS", "company": "Kratos Defense", "events": [] },
-        { "symbol": "AVAV", "company": "AeroVironment", "events": [] }
+        {
+          "symbol": "KTOS",
+          "company": "Kratos Defense",
+          "events": []
+        },
+        {
+          "symbol": "AVAV",
+          "company": "AeroVironment",
+          "events": []
+        }
       ],
       "sector_events": [
-        { "label": "Federal defense budget deadline", "date": "2026-12-05", "notes": "" }
+        {
+          "label": "Federal defense budget deadline",
+          "date": "2026-12-05",
+          "notes": ""
+        }
       ]
     },
     {
       "name": "AI Chips",
+      "policy_areas": [
+        "Science, Technology, Communications",
+        "Foreign Trade and International Finance"
+      ],
+      "keywords": [
+        "semiconductor",
+        "CHIPS",
+        "export control",
+        "artificial intelligence",
+        "advanced computing",
+        "microelectronics",
+        "data center"
+      ],
       "tickers": [
         {
           "symbol": "MU",
           "company": "Micron Technology",
           "events": [
-            { "label": "Q4 earnings report", "date": "2026-09-30", "notes": "" }
+            {
+              "label": "Q4 earnings report",
+              "date": "2026-09-30",
+              "notes": ""
+            }
           ]
         },
         {
           "symbol": "MRVL",
           "company": "Marvell Technology",
           "events": [
-            { "label": "Investor Day", "date": "2026-10-06", "notes": "" }
+            {
+              "label": "Investor Day",
+              "date": "2026-10-06",
+              "notes": ""
+            }
           ]
         },
-        { "symbol": "CRDO", "company": "Credo Technology", "events": [] },
-        { "symbol": "SNDK", "company": "SanDisk", "events": [] }
+        {
+          "symbol": "CRDO",
+          "company": "Credo Technology",
+          "events": []
+        },
+        {
+          "symbol": "SNDK",
+          "company": "SanDisk",
+          "events": []
+        }
       ]
     },
     {
       "name": "Energy / Power",
+      "policy_areas": [
+        "Energy",
+        "Environmental Protection"
+      ],
+      "keywords": [
+        "nuclear",
+        "small modular reactor",
+        "Nuclear Regulatory Commission",
+        "grid",
+        "solar",
+        "clean energy",
+        "electric transmission",
+        "power plant"
+      ],
       "tickers": [
-        { "symbol": "CEG", "company": "Constellation Energy", "events": [] },
+        {
+          "symbol": "CEG",
+          "company": "Constellation Energy",
+          "events": []
+        },
         {
           "symbol": "SMR",
           "company": "NuScale Power",
           "events": [
-            { "label": "Federal regulator decision", "date": "2026-12-31", "notes": "" }
+            {
+              "label": "Federal regulator decision",
+              "date": "2026-12-31",
+              "notes": ""
+            }
           ]
         },
-        { "symbol": "FSLR", "company": "First Solar", "events": [] }
+        {
+          "symbol": "FSLR",
+          "company": "First Solar",
+          "events": []
+        }
       ]
     },
     {
       "name": "EV / Batteries",
+      "policy_areas": [
+        "Energy",
+        "Transportation and Public Works"
+      ],
+      "keywords": [
+        "electric vehicle",
+        "battery",
+        "critical mineral",
+        "charging infrastructure",
+        "lithium",
+        "fuel economy"
+      ],
       "tickers": [
         {
           "symbol": "RIVN",
           "company": "Rivian",
           "events": [
-            { "label": "Q3 delivery report", "date": "2026-10-05", "notes": "estimate" }
+            {
+              "label": "Q3 delivery report",
+              "date": "2026-10-05",
+              "notes": "estimate"
+            }
           ]
         },
-        { "symbol": "QS", "company": "QuantumScape", "events": [] }
+        {
+          "symbol": "QS",
+          "company": "QuantumScape",
+          "events": []
+        }
       ]
     },
     {
       "name": "3D Printing",
+      "policy_areas": [
+        "Commerce",
+        "Science, Technology, Communications"
+      ],
+      "keywords": [
+        "additive manufacturing",
+        "3D printing",
+        "advanced manufacturing"
+      ],
       "tickers": [
-        { "symbol": "DDD", "company": "3D Systems", "events": [] },
-        { "symbol": "XMTR", "company": "Xometry", "events": [] }
+        {
+          "symbol": "DDD",
+          "company": "3D Systems",
+          "events": []
+        },
+        {
+          "symbol": "XMTR",
+          "company": "Xometry",
+          "events": []
+        }
       ]
     }
   ]

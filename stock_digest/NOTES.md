@@ -14,7 +14,38 @@ Running notes and status. See `stock_digest_README.md` for setup.
 ✅ GitHub Actions workflow, weekly cron plus manual dispatch
 ✅ Postgres archive to markets_raw.stock_digest_runs, verified locally
 ✅ Live Discord post verified 2026-09-24, 4 messages to the real channel
-🔨 Pending: add the DISCORD_WEBHOOK_URL GitHub secret, then a manual run
+✅ Stage 2b legislation, Congress.gov API, verified live
+🔨 BLOCKED: the DISCORD_WEBHOOK_URL repository secret is wrong. The webhook
+   itself is valid and posts fine locally, but the Actions run fails with
+   401 Invalid Webhook Token, so the stored value is a partial paste. Re-save
+   it with the full 121 character URL ending in K4IcVo.
+
+## Legislation feature (added 2026-09-24)
+
+Congress.gov API, free key, wired in as stage 2b. Split decided with Nick:
+legislation goes in the weekly digest because it is forward looking and
+actionable, while the trade-and-bill correlation work stays in the
+congressional_tracker project as retrospective research.
+
+Two filters carry the whole feature, both found by testing against live data:
+
+1. **Action must indicate movement.** About 4,500 bills are updated in any 14
+   day window and most read "Referred to the Committee on ...", the graveyard.
+   Filtering to committee reports, calendar placements, chamber passage, and
+   enactment cuts 4,500 to roughly 500.
+2. **Action must be recent.** `updateDate` changes on any metadata edit, not
+   just a legislative action. Without this check the digest reported the FY2026
+   NDAA becoming law in December 2025 as fresh news. Cuts 500 to about 200.
+
+Net result is 0 to 3 bills a week, which is the honest number. A quiet week
+shows no legislation field at all.
+
+**Do not raise `--days` above about 14.** Congress.gov accepts `sort` but does
+not honour it alongside `fromDateTime`: a 45 day query returned the same
+mid-window date on page 1 and page 25. A 45 day window is 35,445 bills, far
+more than can be fetched, so the result is an arbitrary partial slice that
+looks exactly like a quiet week. Verified: 14 days found 214 recent movers,
+45 days found 0. The script now warns when coverage would be incomplete.
 
 ## Decisions
 
@@ -36,12 +67,13 @@ data with a note in the header.
 step switched off there is no summaries file at all and the note is skipped,
 rather than apologizing in every single weekly message.
 
-**@everyone on every message.** Requested 2026-09-24. Discord ignores an
-@everyone in webhook text unless the request sets `allowed_mentions`, so that
-is sent explicitly and scoped to `everyone` only, which also stops a stray
-@name in a headline from pinging a real user. The digest spans four messages,
-so this is four notifications per week. Toggle with `MENTION_EVERYONE` at the
-top of `04_post_to_discord.py`.
+**@everyone on the first message only.** Discord ignores an @everyone in
+webhook text unless the request sets `allowed_mentions`, so that is sent
+explicitly and scoped to `everyone`, which also stops a stray @name in a
+headline from pinging a real user. Continuation messages send
+`allowed_mentions: {parse: []}` so they cannot ping at all, meaning the whole
+digest produces exactly one notification. Toggle with `MENTION_EVERYONE` at
+the top of `04_post_to_discord.py`.
 
 **Stages hand off through JSON files, not function calls.** Lets stage 4 be
 re-run and iterated on without re-fetching or re-spending. Also means the
@@ -77,8 +109,11 @@ to six messages, two keeps it to four.
 - [x] Post a real digest to Discord, verified 2026-09-24
 - [x] Add `DISCORD_WEBHOOK_URL` as a repository secret
 - [x] Commit and push, done 2026-09-24 as commit 111947c on main
+- [ ] Re-save the `DISCORD_WEBHOOK_URL` secret, it is currently truncated
+- [ ] Add `CONGRESS_API_KEY` as a repository secret so legislation runs in CI
 - [ ] Trigger one manual `workflow_dispatch` run from the Actions tab and
       confirm the digest arrives and the @everyone ping fires once
+- [ ] Rotate the Congress.gov API key, it was pasted into a chat transcript
 - [ ] Refine the seed event dates, most are estimates
 - [ ] Decide whether the Postgres archive is worth running locally on a
       schedule, given the Actions run cannot reach the database
