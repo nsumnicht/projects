@@ -263,6 +263,25 @@ def post_message(webhook_url: str, payload: Dict[str, Any]) -> bool:
         if response.status_code in (200, 204):
             return True
 
+        if response.status_code in (401, 404):
+            # The URL is well formed but Discord will not accept it, so
+            # retrying is pointless. Say plainly what to check, because the
+            # raw message ("Invalid Webhook Token") does not make it obvious
+            # that the stored secret is the thing at fault.
+            logging.error(
+                "Discord rejected the webhook itself (%s): %s",
+                response.status_code,
+                response.text[:200],
+            )
+            logging.error(
+                "The URL reached Discord but was refused. Either the stored "
+                "%s is incomplete or mistyped, or the webhook was deleted in "
+                "Discord. Expected a URL of about 120 characters, got %s.",
+                WEBHOOK_URL_VAR,
+                len(webhook_url),
+            )
+            return False
+
         if response.status_code == 429:
             # retry_after comes back in seconds as a float.
             try:
@@ -364,7 +383,10 @@ def main() -> int:
     chunks = chunk_embeds(embeds)
     logging.info("Built %s embeds across %s message(s).", len(embeds), len(chunks))
 
-    webhook_url = os.environ.get(WEBHOOK_URL_VAR, "")
+    # strip() matters here: a secret pasted with a trailing newline or a stray
+    # space is a common and very confusing failure, because the value looks
+    # correct in the web interface but Discord refuses the request.
+    webhook_url = os.environ.get(WEBHOOK_URL_VAR, "").strip()
     if dry_run:
         for index, chunk in enumerate(chunks, start=1):
             print("----- message {} of {} -----".format(index, len(chunks)))
