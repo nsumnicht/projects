@@ -20,6 +20,7 @@ WATCHLIST_FILENAME = "watchlist.json"
 DATA_DIRNAME = "data"
 RAW_FILENAME = "digest_raw.json"
 SUMMARY_FILENAME = "digest_summaries.json"
+LEGISLATION_FILENAME = "legislation.json"
 
 # Event urgency buckets. These drive the Discord embed colors later.
 URGENCY_PAST = "past"          # the stored date is behind us

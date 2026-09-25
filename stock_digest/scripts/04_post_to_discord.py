@@ -53,6 +53,12 @@ MAX_RATE_LIMIT_RETRIES = 3
 HEADLINES_IN_MESSAGE = 2
 MAX_HEADLINE_TITLE_CHARS = 90
 
+# Legislation is shown as its own field at the end of a sector embed, since it
+# applies to the whole sector rather than to one ticker.
+LEGISLATION_FIELD_NAME = "Legislation moving in Congress"
+MAX_BILL_TITLE_CHARS = 110
+MAX_BILL_ACTION_CHARS = 70
+
 # Embed colors are integers, not CSS strings. 0x prefixed hex is the readable
 # way to write them: red for something that just happened, orange for
 # something about to happen, blue for business as usual.
@@ -175,8 +181,49 @@ def build_field(ticker: Dict[str, Any], one_liner: Optional[str]) -> Dict[str, s
     }
 
 
+def build_legislation_field(bills: List[Dict[str, Any]]) -> Optional[Dict[str, str]]:
+    """
+    Build the sector-level field listing bills that have actually advanced.
+
+    Returns None when there is nothing to report, which is the common case.
+    A quiet week in Congress should show nothing rather than an empty heading.
+    """
+    if not bills:
+        return None
+
+    lines = []
+    for bill in bills:
+        title = clean_for_markdown(bill.get("title", ""))
+        if len(title) > MAX_BILL_TITLE_CHARS:
+            title = title[: MAX_BILL_TITLE_CHARS - 3] + "..."
+
+        action = clean_for_markdown(bill.get("latest_action", ""))
+        if len(action) > MAX_BILL_ACTION_CHARS:
+            action = action[: MAX_BILL_ACTION_CHARS - 3] + "..."
+
+        label = bill.get("bill", "bill")
+        url = bill.get("url", "")
+        heading = "[{}]({})".format(label, url) if url else label
+
+        lines.append("- {} {}".format(heading, title))
+        lines.append("  {} ({})".format(action, bill.get("latest_action_date", "")))
+
+    value = "\n".join(lines)
+    if len(value) > MAX_FIELD_VALUE_CHARS:
+        # Drop whole bills rather than slicing, so no markdown link is broken.
+        while lines and len("\n".join(lines)) > MAX_FIELD_VALUE_CHARS:
+            lines = lines[:-2]
+        value = "\n".join(lines)
+        if not value:
+            return None
+
+    return {"name": LEGISLATION_FIELD_NAME, "value": value, "inline": False}
+
+
 def build_sector_embed(
-    sector: Dict[str, Any], summaries: Dict[str, str]
+    sector: Dict[str, Any],
+    summaries: Dict[str, str],
+    bills: Optional[List[Dict[str, Any]]] = None,
 ) -> Optional[Dict[str, Any]]:
     """Build one embed for one sector, or None if the sector has no tickers."""
     fields = []
@@ -186,6 +233,11 @@ def build_sector_embed(
 
     if not fields:
         return None
+
+    # Legislation goes last, after the tickers, and only when there is some.
+    legislation_field = build_legislation_field(bills or [])
+    if legislation_field is not None and len(fields) < MAX_FIELDS_PER_EMBED:
+        fields.append(legislation_field)
 
     embed: Dict[str, Any] = {
         "title": sector.get("name", "Unknown sector"),
@@ -370,9 +422,24 @@ def main() -> int:
         for symbol, text in (summary_file.get("summaries") or {}).items()
     }
 
+    # Legislation is optional in exactly the same way the AI summaries are:
+    # if stage 2b never ran or found nothing, the digest simply omits it.
+    legislation = common.read_json(common.data_path(common.LEGISLATION_FILENAME)) or {}
+    bills_by_sector = legislation.get("by_sector") or {}
+    if legislation.get("ok"):
+        total_bills = sum(len(v) for v in bills_by_sector.values())
+        logging.info("Including %s bills from the legislation scan.", total_bills)
+    elif legislation:
+        logging.info(
+            "Legislation section skipped: %s",
+            legislation.get("reason", "unknown reason"),
+        )
+
     embeds = []
     for sector in digest.get("sectors", []):
-        embed = build_sector_embed(sector, summaries)
+        embed = build_sector_embed(
+            sector, summaries, bills_by_sector.get(sector.get("name", ""), [])
+        )
         if embed is not None:
             embeds.append(embed)
 
