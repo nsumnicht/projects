@@ -48,6 +48,17 @@
               "notes": ""
             }
           ]
+        },
+        {
+          "symbol": "CYTK",
+          "company": "Cytokinetics",
+          "events": [
+            {
+              "label": "FDA decision",
+              "date": "2026-11-14",
+              "notes": "aficamten label expansion to a second form of hypertrophic cardiomyopathy; date from company regulatory filing, not an estimate"
+            }
+          ]
         }
       ]
     },
@@ -205,6 +216,11 @@
           "symbol": "SNDK",
           "company": "SanDisk",
           "events": []
+        },
+        {
+          "symbol": "AMD",
+          "company": "Advanced Micro Devices",
+          "events": []
         }
       ]
     },
@@ -244,6 +260,11 @@
         {
           "symbol": "FSLR",
           "company": "First Solar",
+          "events": []
+        },
+        {
+          "symbol": "OKLO",
+          "company": "Oklo",
           "events": []
         }
       ]
@@ -301,6 +322,36 @@
         {
           "symbol": "XMTR",
           "company": "Xometry",
+          "events": []
+        }
+      ]
+    },
+    {
+      "name": "Satellite Data and Services",
+      "policy_areas": [
+        "Science, Technology, Communications",
+        "Commerce"
+      ],
+      "keywords": [
+        "satellite data",
+        "remote sensing",
+        "earth observation"
+      ],
+      "tickers": [
+        {
+          "symbol": "PL",
+          "company": "Planet Labs",
+          "events": [
+            {
+              "label": "Q3 earnings report",
+              "date": "2026-12-14",
+              "notes": "estimate, from a third-party earnings calendar, not company-announced"
+            }
+          ]
+        },
+        {
+          "symbol": "BKSY",
+          "company": "BlackSky Technology",
           "events": []
         }
       ]
