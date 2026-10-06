@@ -343,3 +343,92 @@ Not yet fixed. All three will mislead the digest if left alone.
 Both 2026-12-31 entries matter because the digest colors an embed urgent based
 on date proximity, so as December 31 approaches each will flash urgent on the
 strength of nothing.
+
+## Session 2026-10-05
+
+Watchlist now 32 tickers across 10 sectors. At 10 sectors the digest still
+posts as a single Discord message, an eleventh would split it into two.
+
+Added a tenth sector, Cybersecurity, holding CRWD, ZS and OKTA. This had been
+held pending company-confirmed earnings dates and all three published them
+roughly two months ahead of the November revisit trigger: CRWD 2026-12-01
+after the close, ZS 2026-12-01, OKTA 2026-12-02. Chose ZS over PANW, which the
+2026-09-28 research had suggested, because PANW reports in mid to late
+November, outside the December to January window, while ZS has a confirmed
+date. The three still cover distinct businesses: endpoint protection on
+individual machines is CRWD, cloud delivered security routing all company
+traffic through the vendor is ZS, identity and access control is OKTA.
+
+Added to AI Chips: AVGO, Broadcom, Q4 earnings 2026-12-10 company-confirmed,
+designs custom AI chips for cloud companies plus the networking between them.
+ASML, Q4 and full year results 2027-01-27 company-confirmed, sole maker of the
+most advanced chip printing machines so a chokepoint for the whole industry.
+NVDA with no events, Nick asked for it as monitor-only and it has no confirmed
+date in the window. AMD was already present from 2026-09-28, not duplicated.
+
+Cleaned up five entries. KOD stale DAYBREAK event removed, the readout
+published 2026-09-28 and was positive, and Kodiak has still only guided the
+Zenkuda FDA filing to Q4 2026, a quarter not a date, so KOD carries no event.
+MU stale event removed and deliberately left with NO event: it reported on
+schedule 2026-09-30, but the next date is contested between 2026-12-16 and
+2026-12-23 and could not be confirmed against Micron's own investor relations
+pages, which load dynamically and defeated a fetch. Also worth sanity checking
+the reported results if they ever matter: record quarterly revenue of 54.2
+billion with full year 133 billion up 256 percent is a striking jump for a
+company of Micron's historical size. RIVN upgraded from an estimated Q3
+delivery report to a company-confirmed Q3 earnings call on 2026-10-29,
+deliveries already came in at 19,248 vehicles up 46 percent, beating about
+18,000 expected, full year guidance held at 65,000 to 70,000. SMR and RKLB both
+had their invented 2026-12-31 placeholders deleted and now carry no events.
+
+Date quality is much better than a week ago. Six of the eleven remaining
+ticker events are company-confirmed or primary-sourced, versus one of twelve
+before. Still carrying no source note: SMMT 2026-11-14, CAPR 2026-11-22, MRVL
+2026-10-06, and the Defense sector budget deadline 2026-12-05.
+
+Resolved from the parked list. RCAT got worse rather than better: the
+previously unconfirmed report that Teal Drones was bypassed is now confirmed,
+the Pentagon's second Gauntlet drone fly-off published results 2026-09-18 and
+Teal competed in the close-quarters category without placing on the
+leaderboard. Still no confirmed earnings date, trackers split between November
+5 and 11. Stays parked. OKLO had real movement but nothing dated, the Nuclear
+Regulatory Commission approved a Principal Design Criteria topical report,
+meaning part of the design is pre-approved and future license applications can
+reference it rather than re-prove it, but that is already past. Stays parked
+and still carries no event. SPIR: the question of whether the ADDITIONAL
+eight-figure NOAA sensor contract landed was not actually answered, the report
+came back describing the already-known 33.2 million task order worth up to 66
+million from 2026-09-23, now with the detail that its two year term starts
+2026-12-01. Treat the additional contract as still unconfirmed. SPIR earnings
+estimated around 2026-11-10, not company-confirmed, so it stays parked and is
+worth rechecking in two to three weeks. Water Infrastructure unchanged, the EPA
+still has not finalized the PFAS rule and has announced no date. Robotics still
+too early, trigger remains late January 2027.
+
+Correction to the 2026-09-28 notes: TSM's 2027-01-08 date is NOT the Q4
+earnings call, it is TSMC's routine monthly sales report, a revenue-only
+release it publishes every month. TSMC has not confirmed its Q4 call, third
+parties estimate 2027-01-14 or 01-15. The earlier claim that this was the one
+strong confirmed date in the window overstated it. TSM was held, ASML covers
+the chip equipment chokepoint angle with a real earnings date instead.
+
+Still held, reviewed and not added, all with regulator-set FDA decision dates
+which is the best date quality available. Held only to stop Biotech swamping
+the digest, not because anything is wrong with them:
+- PRAX, Praxis Precision Medicines, two decisions from one ticker, 2026-12-27
+  for a childhood epilepsy drug and 2027-01-29 for essential tremor, the
+  common condition causing uncontrollable shaking, which also carries an FDA
+  breakthrough designation. Best single pick if January needs filling.
+- IBRX, ImmunityBio, 2027-01-06, Anktiva label expansion for a broader group
+  of bladder cancer patients.
+- INSM, Insmed, 2027-01-28, label expansion of an inhaled antibiotic to a
+  wider lung disease population.
+- VNDA 2026-12-12, CORT 2026-12-17, MLYS 2026-12-22, VTRS 2026-12-27, all
+  carried over unchanged from 2026-09-28. VTRS's drug is tracked in FDA
+  calendars under the code MR-107A-02.
+
+Branch note: the 2026-09-28 commit sat on stock-digest-satellite-sector and
+was never merged. Merged to main on 2026-10-05 and pushed, because GitHub
+Actions runs scheduled workflows only from the default branch, so the weekly
+digest reads watchlist.json from main. Any future watchlist change has to
+reach main to affect the Discord post.

@@ -19,13 +19,7 @@
         {
           "symbol": "KOD",
           "company": "Kodiak Sciences",
-          "events": [
-            {
-              "label": "DAYBREAK trial topline data",
-              "date": "2026-09-30",
-              "notes": "one-year primary endpoint readout"
-            }
-          ]
+          "events": []
         },
         {
           "symbol": "SMMT",
@@ -120,13 +114,7 @@
         {
           "symbol": "RKLB",
           "company": "Rocket Lab",
-          "events": [
-            {
-              "label": "Neutron rocket first launch",
-              "date": "2026-12-31",
-              "notes": "estimate, has slipped before"
-            }
-          ]
+          "events": []
         },
         {
           "symbol": "ASTS",
@@ -188,13 +176,7 @@
         {
           "symbol": "MU",
           "company": "Micron Technology",
-          "events": [
-            {
-              "label": "Q4 earnings report",
-              "date": "2026-09-30",
-              "notes": ""
-            }
-          ]
+          "events": []
         },
         {
           "symbol": "MRVL",
@@ -220,6 +202,33 @@
         {
           "symbol": "AMD",
           "company": "Advanced Micro Devices",
+          "events": []
+        },
+        {
+          "symbol": "AVGO",
+          "company": "Broadcom",
+          "events": [
+            {
+              "label": "Q4 earnings report",
+              "date": "2026-12-10",
+              "notes": "company-confirmed, reports after market close"
+            }
+          ]
+        },
+        {
+          "symbol": "ASML",
+          "company": "ASML Holding",
+          "events": [
+            {
+              "label": "Q4 and full year results",
+              "date": "2027-01-27",
+              "notes": "company-confirmed"
+            }
+          ]
+        },
+        {
+          "symbol": "NVDA",
+          "company": "NVIDIA",
           "events": []
         }
       ]
@@ -249,13 +258,7 @@
         {
           "symbol": "SMR",
           "company": "NuScale Power",
-          "events": [
-            {
-              "label": "Federal regulator decision",
-              "date": "2026-12-31",
-              "notes": ""
-            }
-          ]
+          "events": []
         },
         {
           "symbol": "FSLR",
@@ -289,9 +292,9 @@
           "company": "Rivian",
           "events": [
             {
-              "label": "Q3 delivery report",
-              "date": "2026-10-05",
-              "notes": "estimate"
+              "label": "Q3 earnings call",
+              "date": "2026-10-29",
+              "notes": "company-confirmed, reports after market close"
             }
           ]
         },
@@ -353,6 +356,53 @@
           "symbol": "BKSY",
           "company": "BlackSky Technology",
           "events": []
+        }
+      ]
+    },
+    {
+      "name": "Cybersecurity",
+      "policy_areas": [
+        "Science, Technology, Communications",
+        "Commerce"
+      ],
+      "keywords": [
+        "cybersecurity",
+        "critical infrastructure protection",
+        "incident reporting"
+      ],
+      "tickers": [
+        {
+          "symbol": "CRWD",
+          "company": "CrowdStrike",
+          "events": [
+            {
+              "label": "Quarterly earnings report",
+              "date": "2026-12-01",
+              "notes": "company-confirmed, reports after market close"
+            }
+          ]
+        },
+        {
+          "symbol": "ZS",
+          "company": "Zscaler",
+          "events": [
+            {
+              "label": "Quarterly earnings report",
+              "date": "2026-12-01",
+              "notes": "company-confirmed"
+            }
+          ]
+        },
+        {
+          "symbol": "OKTA",
+          "company": "Okta",
+          "events": [
+            {
+              "label": "Quarterly earnings report",
+              "date": "2026-12-02",
+              "notes": "company-confirmed"
+            }
+          ]
         }
       ]
     }
