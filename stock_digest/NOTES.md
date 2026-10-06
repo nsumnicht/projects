@@ -432,3 +432,80 @@ was never merged. Merged to main on 2026-10-05 and pushed, because GitHub
 Actions runs scheduled workflows only from the default branch, so the weekly
 digest reads watchlist.json from main. Any future watchlist change has to
 reach main to affect the Discord post.
+
+## PRAX research, 2026-10-05
+
+Added to Biotech with both FDA decision dates. Praxis Precision Medicines
+designs drugs for genetic and electrical problems in the brain and nervous
+system, mostly sodium and calcium channels, the switches in nerve cells that
+control electrical signals. It has NO approved product and no product revenue,
+every dollar on its books came from investors.
+
+Relutrigine, FDA decision 2026-12-27, for the rare genetic childhood epilepsies
+SCN2A and SCN8A, which begin in infancy and can cause dozens of seizures a day
+with developmental delays. No drug is currently approved specifically for these
+subtypes. The EMBOLD trial, 51 patients, showed a 53 percent reduction in motor
+seizures against placebo, met its main goal, and over 30 percent of patients
+became seizure-free for a period, with no serious drug-related side effects.
+Important date caveat: the original target was 2026-09-27 and it slipped to
+2026-12-27 when the FDA reclassified additional analyses Praxis submitted as a
+major amendment, announced 2026-06-29, which adds three months under FDA rules.
+A target date that has already moved once can move again. The company says no
+new safety or manufacturing concerns were raised, and routine mid-cycle
+feedback in August 2026 reportedly flagged nothing major. No advisory panel is
+currently expected.
+
+Ulixacaltamide, FDA decision 2027-01-29, for essential tremor, standard review
+rather than priority, and no sign this date has moved. The Essential3 program:
+Study 1 enrolled 473 adults, met its main goal with a 4.3 point improvement
+over placebo on a validated 11-item patient-reported tremor scale at p less
+than 0.0001, and a smaller withdrawal study confirmed patients who stayed on
+the drug did better than those switched to placebo. All key secondary measures
+also significant, no serious drug-related side effects.
+
+On essential tremor as an opportunity: roughly 7 million Americans have it with
+about 2 million having a genuine unmet need. Praxis frames peak market above 10
+billion dollars, which is the company's own projection and carries that bias.
+The real case is that existing treatment is mediocre: propranolol and primidone
+are the standard first pills, only about 40 percent of patients find them
+effective, roughly a third stop taking them, and primidone tends to lose effect
+over time. The alternative is deep brain stimulation, implanted electrodes,
+which works better but carries surgical risk including bleeding and stroke.
+Ulixacaltamide would be the first drug purpose built for essential tremor
+rather than a repurposed blood pressure or seizure pill. Honest read: a genuine
+incremental advance in the pill category, not something that makes surgery
+obsolete.
+
+Both drugs carry FDA breakthrough therapy designation, which is why coverage of
+this company reads breathlessly. In practice that designation only means more
+frequent FDA meetings and faster feedback during development. It is not a
+decision to approve and carries no promise about the outcome.
+
+The risk picture, which is the part that matters. Praxis has failed late stage
+trials twice: its depression drug PRAX-114 failed outright in 2023, after which
+it halted multiple studies and cut staff and the stock fell over 60 percent,
+and vormatrigine missed its main goal in a phase 2/3 epilepsy trial in 2024.
+Cash is genuinely fine, it raised 621 million in January 2026, dilutive at the
+time, and reported about 1.4 billion in cash as of 2026-06-30 with runway into
+2028, so it should not need to raise again through either decision unless a
+rejection forces it to fund a resubmission. The trial design soft spot is
+EMBOLD: 51 patients is small even for a rare disease, and the placebo exposure
+window was shorter and asymmetrically placed against the drug exposure window,
+which is the kind of thing an FDA advisory panel probes hard when one is
+convened. The commercial buildout is confirmed, not exaggerated: Praxis has
+publicly said it hired commercial leadership and is building marketing, access
+and compliance teams, lined up distribution, and is building drug inventory,
+all ahead of an approval it does not have. A rejection on 2027-01-29 turns that
+into a sunk cost with no revenue behind it, on top of the stock reaction.
+
+Stock as of 2026-10-05: last close 283.56, down roughly 12 percent over three
+months from about 323.95, having ranged between 241 and 386, so volatile in
+both directions rather than a steady slide. No single confirmed cause for the
+recent drift, the clearest event was a 7 percent after hours drop on the
+2026-06-29 delay news, which falls just outside that three month window.
+
+Not recorded in watchlist.json: a Q3 2026 earnings date of 2026-11-06. That
+came from a secondary aggregator rather than Praxis's own investor relations
+calendar, so it was deliberately left out. Worth adding if the company confirms
+it. No confirmed Q4 date, which typically lands in February, after the
+relutrigine decision.
