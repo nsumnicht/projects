@@ -53,6 +53,22 @@
               "notes": "aficamten label expansion to a second form of hypertrophic cardiomyopathy; date from company regulatory filing, not an estimate"
             }
           ]
+        },
+        {
+          "symbol": "PRAX",
+          "company": "Praxis Precision Medicines",
+          "events": [
+            {
+              "label": "FDA decision",
+              "date": "2026-12-27",
+              "notes": "childhood epilepsy drug; FDA target date set after formal acceptance of the application, not an estimate"
+            },
+            {
+              "label": "FDA decision",
+              "date": "2027-01-29",
+              "notes": "essential tremor drug, carries FDA breakthrough designation; FDA target date set after formal acceptance of the application, not an estimate"
+            }
+          ]
         }
       ]
     },
