@@ -15,3 +15,7 @@ stock_digest/data/*.json
 # machine only. Ignoring the whole tree, not individual files, so nothing
 # inside can be added by accident.
 work/
+
+# Personal workspace rules and running status notes. Local only.
+/CLAUDE.md
+/NOTES.md
