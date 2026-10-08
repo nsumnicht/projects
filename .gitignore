@@ -6,3 +6,6 @@ work/job_search/google_credentials.json
 # stock_digest: per-run output, regenerated every week
 stock_digest/data/*.json
 !stock_digest/data/.gitkeep
+
+# Claude Code local config, agents, commands and session transcripts.
+.claude/
