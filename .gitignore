@@ -10,3 +10,8 @@ stock_digest/data/*.json
 # Local editor config, agent and command definitions, and session
 # transcripts. Local only, never committed.
 .claude/
+
+# Employer work. NEVER commit or push this directory, it lives on this
+# machine only. Ignoring the whole tree, not individual files, so nothing
+# inside can be added by accident.
+work/
