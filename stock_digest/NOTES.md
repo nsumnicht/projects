@@ -509,3 +509,91 @@ came from a secondary aggregator rather than Praxis's own investor relations
 calendar, so it was deliberately left out. Worth adding if the company confirms
 it. No confirmed Q4 date, which typically lands in February, after the
 relutrigine decision.
+
+## Session 2026-10-08, "who powers AI" additions
+
+Watchlist now 37 tickers across 10 sectors.
+
+A friend sent Nick five tickers framed as a "who powers AI" category, not as a
+nuclear basket, which matters for how to read them: OKLO, BE, XE, LEU, CCJ.
+OKLO was already tracked. The other four were all added to the existing
+Energy / Power sector as monitor-only, no events, on Nick's call to add them
+all and prune later if nothing comes of them. Review trigger: if none has
+produced a dated event or a reason to keep it by roughly December 2026 or
+January 2027, revisit and consider removing.
+
+What they are:
+- BE, Bloom Energy, makes fuel cells, boxes that turn natural gas or hydrogen
+  directly into electricity on-site, so a data center can get power in months
+  rather than waiting years for a grid connection or a reactor. Mostly a
+  natural gas story, not nuclear at all, which is why it only makes sense
+  under the "who powers AI" framing rather than a nuclear one. Up 228 percent
+  over the year to early October 2026. The 3.6 billion dollar data center
+  savings claim circulating is Bloom's own marketing number, not independent.
+- XE, X-Energy, designs the Xe-100 small reactor and makes the TRISO-X fuel
+  pellets that go in it, selling reactor and fuel as a package. IPO'd on
+  Nasdaq 2026-04-24, closed 27 percent above offer price, backed by Amazon and
+  Dow who have both signed deals to buy power. Pre-revenue, no operating
+  reactor. Its one real future catalyst is a Nuclear Regulatory Commission
+  construction permit decision for the Dow project in Seadrift, Texas. The
+  environmental review cleared ahead of schedule in May 2026 and third parties
+  put the permit decision in late 2026 to Q1 2027, but no actual date exists,
+  so nothing was recorded. Watch for that date, it is the thing that would
+  make XE a real dated entry.
+- LEU, Centrus Energy, runs the only operating uranium enrichment plant in the
+  US, meaning it concentrates the usable form of uranium into reactor fuel,
+  and is the sole current domestic supplier of HALEU, the higher-enrichment
+  fuel that small reactors like Oklo's need. Holds a 900 million dollar
+  Department of Energy enrichment contract and a HALEU supply deal with Oklo
+  signed June 2026. Genuinely whipsawing: a 52-week low on 2026-10-01 after a
+  500 million dollar share sale diluted holders, then up nearly 12 percent by
+  2026-10-06.
+- CCJ, Cameco, mines raw uranium ore and owns a large stake in Westinghouse,
+  which builds nuclear plants. Near highs on uranium prices at a six-month
+  peak and an 80 billion dollar US government-backed reactor construction deal
+  through Westinghouse announced late 2025. Worth watching the disconnect: its
+  Westinghouse stake posted a net loss in Q2 2026 on Czech construction costs,
+  so earnings have been falling even as uranium prices rise.
+
+Why CCJ and LEU are not the gold-miner problem. The objection that parked
+Precious Metals was that several miners were one trade wearing four tickers.
+These two diverge: Centrus hit a 52-week low on company-specific dilution on
+2026-10-01 in the same month Cameco sat near highs, and they popped on
+different news. They are different stages of the fuel chain, mining versus
+enrichment, and share a sentiment tailwind without sharing a storyline.
+
+Why they went into Energy / Power rather than a new sector. A dedicated
+nuclear fuel sector has a real argument, since enrichment responds to policy
+that does nothing to a generator like CEG, especially Russian uranium import
+restrictions given Russia's dominance in enrichment. But it would hold two
+tickers, and an eleventh sector splits the Discord digest into two messages
+because one embed is built per sector against a 10 embed cap. Revisit only if
+a third fuel-chain name appears. If ever split out, the starting config was
+policy_areas "Energy", "Armed Forces and National Security" for the
+proliferation and national security angle, and "Foreign Trade and
+International Finance" for the Russian import angle, with keywords "uranium
+enrichment", "HALEU", "Russian uranium import ban".
+
+Added four keywords to the Energy / Power sector so the legislation tracker
+actually covers the new holdings: "uranium", "uranium enrichment", "HALEU" and
+"fuel cell". The sector's existing keywords were all generation-side, nuclear,
+grid, solar, transmission, power plant, so nothing would have caught a bill
+about enrichment or fuel cells. Note the sector's policy_areas are still just
+"Energy" and "Environmental Protection", which does not cover the national
+security or trade angles on enriched uranium supply. Left alone deliberately,
+since widening policy_areas changes what bills the whole sector pulls.
+
+Also removed the MRVL "Investor Day" event dated 2026-10-06, which has now
+passed. It happened as scheduled, a strategy presentation in New York rather
+than a results release. MRVL stays in AI Chips with no events.
+
+Prices moved against this whole group in the two days between research and
+adding them, 2026-10-06 to 2026-10-08: BE 297.73 to 268.34, XE 15.74 to 13.47,
+LEU 153.48 to 139.50, CCJ 93.38 to 85.99. That is a broad pullback across the
+group rather than any one name's news.
+
+OKLO status unchanged, still no dated catalyst. It rose on 2026-10-06 on a
+Google and Constellation 20-year nuclear power deal, but that is Google and
+Constellation's deal, not a scheduled Oklo event, so it is sector sentiment
+rather than a calendar entry. Its own earnings are estimated around 2026-11-10,
+not company-confirmed.

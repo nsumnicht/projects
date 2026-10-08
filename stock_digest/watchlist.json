@@ -197,13 +197,7 @@
         {
           "symbol": "MRVL",
           "company": "Marvell Technology",
-          "events": [
-            {
-              "label": "Investor Day",
-              "date": "2026-10-06",
-              "notes": ""
-            }
-          ]
+          "events": []
         },
         {
           "symbol": "CRDO",
@@ -263,7 +257,11 @@
         "solar",
         "clean energy",
         "electric transmission",
-        "power plant"
+        "power plant",
+        "uranium",
+        "uranium enrichment",
+        "HALEU",
+        "fuel cell"
       ],
       "tickers": [
         {
@@ -284,6 +282,26 @@
         {
           "symbol": "OKLO",
           "company": "Oklo",
+          "events": []
+        },
+        {
+          "symbol": "BE",
+          "company": "Bloom Energy",
+          "events": []
+        },
+        {
+          "symbol": "XE",
+          "company": "X-Energy",
+          "events": []
+        },
+        {
+          "symbol": "LEU",
+          "company": "Centrus Energy",
+          "events": []
+        },
+        {
+          "symbol": "CCJ",
+          "company": "Cameco",
           "events": []
         }
       ]
