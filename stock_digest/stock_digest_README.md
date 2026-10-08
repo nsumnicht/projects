@@ -8,6 +8,13 @@ There is an optional Claude summarization step that adds a plain-English
 one-liner per ticker. It is switched off by default because it is the only
 part that would cost money. See the optional section near the bottom.
 
+To be precise about what that step does, since "AI news digest" invites the
+wrong assumption: the headlines themselves come from the free Google News RSS
+feed, and prices come from yfinance. Claude does no fetching, scraping, or
+searching. It receives the already-gathered prices and headlines in one
+batched API call and returns one sentence per ticker. That single API call is
+the only use of Claude anywhere in this project, and it is currently disabled.
+
 Runs itself every Sunday evening through GitHub Actions. Nothing to click.
 
 ## What it does, in order

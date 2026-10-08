@@ -7,5 +7,6 @@ work/job_search/google_credentials.json
 stock_digest/data/*.json
 !stock_digest/data/.gitkeep
 
-# Claude Code local config, agents, commands and session transcripts.
+# Local editor config, agent and command definitions, and session
+# transcripts. Local only, never committed.
 .claude/
